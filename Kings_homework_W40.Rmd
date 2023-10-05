@@ -1,0 +1,28 @@
+---
+title: "Kings_homework_W40"
+output: html_document
+date: "2023-10-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+(library(tidyverse))
+
+
+kongerækken <- read_csv("data/Kongerækken - Ark1.csv", na = c("0"))
+head(kongerækken)
+ggplot(kongerækken)
+
+```
+```{r}
+
+kongerækken %>% 
+  mutate(years_on_throne=`Regerings slut`-`Regerings start`) %>% 
+  ggplot(aes(x=Død,y=years_on_throne))+
+  geom_smooth()+
+  labs(x = "time")
+```
+
